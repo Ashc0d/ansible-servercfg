@@ -1,0 +1,20 @@
+---
+- name: Update machines for Debian 
+  apt:
+    update_cache: yes
+    name: "*"
+    state: latest
+    autoremove: yes
+    clean: yes
+  when: ansible_os_family == "Debian" 
+  tags: update
+  
+- name: Update machines for RHEL
+  yum: 
+    update_cache: yes
+    name: "*"
+    state: latest
+  when: ansible_os_family == "Redhat"
+  tags: update
+
+  notify: reboot
