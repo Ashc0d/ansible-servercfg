@@ -5,9 +5,9 @@
     name: "*"
     state: latest
     autoremove: yes
-    clean: yes
   when: ansible_os_family == "Debian" 
   tags: update
+  notify: reboot
   
 - name: Update machines for RHEL
   yum: 
@@ -16,5 +16,4 @@
     state: latest
   when: ansible_os_family == "Redhat"
   tags: update
-
   notify: reboot
