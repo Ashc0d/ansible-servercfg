@@ -12,4 +12,9 @@
       line: "PasswordAuthentication no"
     - regexp: "^PermitRootLogin"
       line: "PermitRootLogin no"
+    - regexp: "^PubkeyAuthentication"
+      line: "PubkeyAuthentication yes"
+    - regexp: "^PermitEmptyPasswords"
+      line: "PermitEmptyPasswords no"
+  when: ansible_os_family == "Debian" 
   notify: restart ssh
