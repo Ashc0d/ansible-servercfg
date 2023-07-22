@@ -1,0 +1,8 @@
+---
+
+- name: enable_service
+  systemd:
+    name: "fail2ban"
+    state: started
+    enabled: true
+  listen: "enable_service"
