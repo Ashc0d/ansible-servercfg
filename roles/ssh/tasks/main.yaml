@@ -17,4 +17,10 @@
     - regexp: "^PermitEmptyPasswords"
       line: "PermitEmptyPasswords no"
   when: ansible_os_family == "Debian" 
+  
+- name: Insuring Secure ssh works
+  file: 
+    path: /etc/ssh/sshd_config.d/50-cloud-init.conf
+    state: absent
+
   notify: restart ssh
