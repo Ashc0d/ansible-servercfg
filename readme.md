@@ -1,4 +1,4 @@
-# This ansible repository is for confurging and securing debian based linux servers and machine
+# This ansible repository is for configuring and securing debian based linux servers and machine
 
 ## This playbook is still in development
 
