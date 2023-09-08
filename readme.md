@@ -21,3 +21,9 @@ or
 ```bash
 ansible-playbook main.yml -i hosts.ini --limit=<node name>
 ```
+
+or to run locally
+
+```bash
+ansible-playbook main.yml -i hosts.ini --connection=local
+```
