@@ -25,5 +25,11 @@ ansible-playbook main.yml -i hosts.ini --limit=<node name>
 or to run locally
 
 ```bash
-ansible-playbook main.yml -i hosts.ini --connection=local
+ansible-playbook main.yml -i hosts.ini --connection=local -K
+```
+
+or to run with verbose enable
+
+```bash
+ansible-playbook main.yml -i hosts.ini -k -K -vvvv
 ```

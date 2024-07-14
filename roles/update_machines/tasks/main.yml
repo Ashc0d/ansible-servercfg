@@ -16,4 +16,4 @@
     state: latest
   when: ansible_os_family == "RedHat"
   tags: update
-  notify: reboot
+  #notify: reboot

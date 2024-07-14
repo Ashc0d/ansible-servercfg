@@ -3,26 +3,40 @@
 - name: Install debian packages
   apt:
     name:
-      - docker.io
-      - docker-compose
-      - fail2ban
-      - git 
-      - wget 
-      - curl
-      - vim 
+       - python3
+       - docker.io
+       - docker-compose
+       - fail2ban
+       - git 
+       - wget 
+       - curl
+       - vim 
+       - tmux
     state: present
   notify: enable_service
 
 
-- name: cloudfalred Install
+# - name: Cloudflared install
+#  block:
+#    - name: Check cloudflared install
+#      command: dpkg-query -W cloudflared
+#      register: cloudflare
+#      failed_when: cloudflare.rc > 1
+#      changed_when: cloudflare.rc == 1
+#    
+#    - name: Install cloudflared
+#      apt: deb="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb"
+#      become: true
+#      when: cloudflare.rc == 1
+
+- name: Tailscale install
   block:
-    - name: Check cloudfalred Install
-      command: dpkg-query -W cloudfalred
-      register: cloudfalre
-      failed_when: cloudfalre.rc > 1
-      changed_when: cloudfalre.rc == 1
-    
-    - name: Install cloudfalred
-      apt: deb="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb"
+    - name: check tailscale install
+      command: dpkg-query -W tailscale
+      register: tailscale
+      failed_when: tailscale.rc > 1
+      changed_when: tailscale.rc == 1
+    - name: Install tailscale
+      ansible.builtin.shell: curl -fsSL https://tailscale.com/install.sh | sh
       become: true
-      when: cloudfalre.rc == 1
+      when: tailscale.rc == 1
