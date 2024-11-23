@@ -27,3 +27,9 @@ or to run locally
 ```bash
 ansible-playbook main.yml -i hosts.ini --connection=local
 ```
+
+Run Update On Machines
+
+```bash
+ansible-playbook -i hosts.ini main.yml --tags=update -K -e skip_handlers=true
+```
